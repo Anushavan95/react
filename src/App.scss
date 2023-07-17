@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+$col: red;
+.App {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+h1 {
+  color: $col;
+  text-align: center;
+}
+.nav-list {
+  width: 100%;
+  li {
+    padding: 5px;
+
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  .btns {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.success{
+  color: green;
+}
+
+.important {
+  color: red;
+}
