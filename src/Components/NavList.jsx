@@ -20,7 +20,7 @@ export default class NavList extends React.Component {
   render() {
     console.log(this.state.important, "important render");
     const { name, id } = this.props;
-    console.log(id);
+   
     // let myclass = ''
     // if(this.state.important) {
     //   myclass+= " important"
