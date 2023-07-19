@@ -41,3 +41,31 @@ h1 {
 .important {
   color: red;
 }
+
+.layout {
+  width: 60%;
+  margin: 0 auto;
+  background-color: teal;
+  height: 100vh;
+  text-align: center;
+  font-size: 32px;
+  .components_layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .components_auth{
+    display: flex;
+  }
+}
+button {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+button.active {
+  background-color: red;
+}
