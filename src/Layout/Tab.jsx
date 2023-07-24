@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 export default class Tab extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <button className={`${this.props.tabContext == "Register"? "active": ""}`} onClick={() => this.props.changetabHandler("Register")}>
