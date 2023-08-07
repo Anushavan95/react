@@ -1,12 +1,11 @@
 import React from 'react'
-import Text from './dynamics/Text'
-
-export default function Header(props) {
+import Logo from '../assets/Logo'
+import LogoIcon from "../assets/Logo.svg"
+export default function Header() {
   return (
     <div>
-     <Text class={'success'}>
-     {props.text}
-     </Text>
+
+      <Logo imgUrl={LogoIcon} />
     </div>
   )
 }

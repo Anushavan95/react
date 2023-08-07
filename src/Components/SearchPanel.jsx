@@ -1,41 +1,41 @@
-import Inputs from "./dynamics/Inputs";
-import React, { Component } from "react";
+import React, { useEffect, useState } from 'react'
+import TextField from './dynamic/TextField'
 
-export default class SearchPanel extends Component {
-  state = {
-    list: "",
-  };
+export default function SearchPanel() {
+const [serachValue, setSearchValue] = useState('')
+const [count , setCount] = useState(0)
 
-  handelechange = (e) => {
-    this.setState({
-      list: e.target.value,
-    });
-  };
-  handelListSubmit = (e) => {
-    e.preventDefault();
-    if (this.state.list !== "") {
-      this.props.handleAddList(this.state.list);
-      this.setState({
-        list: "",
-      });
-    } else {
-      alert("empty state");
-    }
-  };
-  render() {
-    console.log(this.state.list);
-    return (
-      <form onSubmit={this.handelListSubmit}>
-        {/* <input
-          value={this.state.list}
-          onChange={this.handelechange}
-          placeholder="add list"
-        /> */}
-        {/* <button>add list</button> */}
-        <Inputs placeholder={"add list"} value={this.state.list} handelechange={this.handelechange}>
-        <button>add list</button>
-      </Inputs>
-      </form>
-    );
-  }
+const [obj, setObj] = useState([{name: 'text'}, {name: 'text2'}]);
+const handleSearchValue = (e) => {
+setSearchValue(e.target.value)
+}
+const addObjectHandle = () => {
+    setCount(prevCount  => {
+       return prevCount +1
+    })
+    console.log(count, "my statre")
+
+    setCount(prevCount  => prevCount+1)
+    // setCount(count+1)
+
+    // setObj((prevState => {
+    //     return [
+    //         ...prevState, 
+    //         {name: "text3"}
+    //     ]
+    // }))
+}
+
+useEffect(() => {
+// console.log(count, "effect count")
+}, [count])
+// console.log(serachValue, 'serachValueserachValueserachValue')
+  return (
+    <div>
+      <TextField type={"search"} placeholder={"Search"} handleSearchValue={handleSearchValue}/>
+      <button onClick={addObjectHandle}>add object</button>
+      {/* {JSON.stringify(obj)}
+      {count} */}
+    </div>
+  )
 }

@@ -3,69 +3,42 @@
   padding: 0;
   
 }
-$col: red;
-.App {
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-}
-h1 {
-  color: $col;
-  text-align: center;
-}
-.nav-list {
-  width: 100%;
-  li {
-    padding: 5px;
-
-    border: 1px solid;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
-    margin: 10px;
-  }
-  .btns {
-    width: 20%;
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-.success{
-  color: green;
-}
-
-.important {
-  color: red;
-}
-
 .layout {
-  width: 60%;
-  margin: 0 auto;
   background-color: teal;
-  height: 100vh;
-  text-align: center;
-  font-size: 32px;
-  .components_layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .components_auth{
-    display: flex;
-  }
 }
-button {
-  padding: 5px 15px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
+.layout_section {
+  display: flex;
+  gap: 30px
 }
 
-button.active {
-  background-color: red;
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tab_container {
+  button {
+    background-color: #1976d2;
+    color: white;
+    border: 1px solid;
+
+  }
+  button.Mui-selected {
+    color: black;
+    background-color: teal;
+  }
+}
+
+.MuiAlert-standard {
+  width: 250px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+transform: translateX(100%);
+transition: 0.5s all ease-in;
+}
+.showalert {
+transform: translateX(0%);
+  
 }
