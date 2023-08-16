@@ -1,44 +1,51 @@
-import React, { useEffect, useRef, createElement  } from "react";
-import "./App.scss";
-import { useState } from "react";
-import { Button, Typography } from "@mui/material";
-// let count = 0;
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import Layout from "./Components/layout";
+import Cart from "./Components/Cart";
+import { ProductConext, productConext } from "./context/productContext";
+import Login from "./Components/Login";
+import Sign from "./Components/Sign";
+import AuthContext from "./context/AuthContext";
+import { FetchContext } from "./context/FetchContext";
+
 export default function App() {
-  const [value, setvalue] = useState('')
-  const [count, setCount] = useState(0)
-  const elementRef = useRef(null)
-  const ref = useRef(0)
-  const myref = useRef(null)
+  const [products, setproducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
+  const [price, setprice] = useState(0);
 
-  useEffect((() => {
-    let element = document.querySelector('.MuiButton-contained')
-    console.log(element)
-    ref.current++
-  //  console.log(ref.current, "ref current")
-  // console.log("jdsdjhsjdhj")
-  // setvalue("my value")
-  }), [ref.current])
+  useEffect(() => {
+    axios.get("https://fakestoreapi.com/products").then((res) => {
+      setproducts(res.data);
+    });
+  }, []);
+  const addProduct = (item) => {
+    setCart((prevCart) => {
+      return [...prevCart, item];
+    });
+  };
+  let values = {
+    cart,
+    products,
+    addProduct
+  };
+  let obj = {
+    item: 'keys',
+    products
+  }
+  return (
+    <FetchContext.Provider value={obj}>
+      <AuthContext>
+        <Login />
+        <Sign />
+        {/* <Layout  /> */}
 
+      </AuthContext>
 
-// console.log(elementRef.current)
-// console.log(myref.current)
-// useEffect(() => {
-//  
-
-
-  
-// }, [])
-// const element = createElement("h2", null,   <Typography>ref {""}{ref.current}</Typography> )
-// console.log(element)
-return (
-    <div className="layout">
-   <Typography>ref {""}{ref.current}</Typography> 
-   <Typography>state {""}{count}</Typography> 
-
-      <Button variant="contained" onClick={() => setCount(count+1)} ref={myref}>add count</Button>
-      <input value={value} onChange={(e) => setvalue(e.target.value)} ref={elementRef} />
-    Hook
-    </div>
+      <ProductConext.Provider value={values}>
+        <Layout  />
+        <Cart />
+      </ProductConext.Provider>
+    </FetchContext.Provider>
   );
 }
